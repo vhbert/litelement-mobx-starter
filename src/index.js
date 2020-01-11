@@ -10,7 +10,8 @@ render(
   document.getElementById('app')
 );
 
-const router = createRouter("router-slot").listen();
+const router = createRouter("router-slot");
+router.listen();
 
 
 registerSW();

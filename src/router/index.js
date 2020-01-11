@@ -2,7 +2,8 @@ import {Router} from 'slick-router';
 import {wc} from 'slick-router/middlewares/wc';
 import {routerLinks, withRouterLinks} from 'slick-router/middlewares/router-links';
 import HomeView from "../views/Home";
-
+import {events} from "slick-router/middlewares/events";
+import AboutView from "../views/About";
 
 export function createRouter(outlet) {
 
@@ -12,17 +13,15 @@ export function createRouter(outlet) {
       name: 'home',
       component: 'home-view'
     },
+
     {
-      path: '/about',
+      path: '/about/:entry?',
       name: 'about',
-      component: () => {
-        import(/* webpackChunkName: "about" */ '../views/About');
-        return "about-view";
-      }
+      component: () => import("../views/About"),
     }
 
   ];
-  const router = new Router({routes, outlet: 'router-slot', log: false});
+  const router = new Router({routes, outlet: outlet, log: false});
   router.use(wc);
   router.use(routerLinks);
   return router;

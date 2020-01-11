@@ -5,7 +5,7 @@
   "main": "sw.js",
   "scripts": {
     "build": "webpack --env.mode production",
-    "serve": "webpack-dev-server --env.mode development ",
+    "serve": "webpack-dev-server --history-api-fallback --env.mode development ",
     "serve:prod": "webpack-dev-server --env.mode production"
   },
   "repository": {

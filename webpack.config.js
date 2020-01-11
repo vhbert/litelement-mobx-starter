@@ -95,7 +95,7 @@ module.exports = ({mode, presets}) => {
                   '@babel/env',
                   {
                     targets: [
-                      'last 1 Chrome major versions',
+                      'last 2 Chrome major versions',
 
                     ],
                     useBuiltIns: false,

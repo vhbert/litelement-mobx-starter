@@ -1,6 +1,6 @@
 import {Base} from "./Base";
 import {html} from "lit-html";
-import {css} from "lit-element";
+import {css, property} from "lit-element";
 
 
 let rootStore, commonStore;
@@ -10,19 +10,12 @@ export default class HelloWorld extends Base {
     msg: {type: String}
   };
 
+
   connectedCallback() {
     super.connectedCallback();
     rootStore = this.context.stores;
     commonStore = rootStore.commonStore;
   }
-
-  handleCount = (countUp) => {
-    if (countUp) {
-      commonStore.countUp();
-    } else {
-      commonStore.countDown();
-    }
-  };
 
 
   render() {
@@ -43,14 +36,9 @@ export default class HelloWorld extends Base {
           <li><a href="https://mobx.js.org/README.html" target="_blank" rel="noopener">MobX Docs</a></li>
           <li><a href="https://github.com/blikblum/slick-router#readme" target="_blank" rel="noopener">Slick Router Docs</a></li>
         </ul>
-        <h3>Basic Store Example</h3>
-        <h4>Observable</h4>
-        ${commonStore.counter}
-        <h4>Actions</h4>
-        <button @click="${() => this.handleCount(false)}">- 1</button>
-        <button @click="${() => this.handleCount(true)}">+ 1</button>
-        <h4>Computed Property</h4>
-        Is counter positive: <b>${commonStore.isCounterPositive}</b>    
+
+      
+
     </div>`;
   }
 
@@ -77,6 +65,7 @@ export default class HelloWorld extends Base {
         button{
         margin: 0 10px;
         }   
+
       </style>
       `;
   }

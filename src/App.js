@@ -6,7 +6,6 @@ export default class AppBase extends Base {
     return {
       stores: {type: Object, attribute: false}
     }
-    // stores: {type: Object, attribute: false}
   };
 
   static providedContexts = {
