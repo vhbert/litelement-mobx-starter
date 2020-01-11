@@ -4,7 +4,7 @@ const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const {GenerateSW} = require('workbox-webpack-plugin');
 let mode;
@@ -39,13 +39,13 @@ const prodPlugins = [
     include: [/\.html$/, /\.js$/, /\.css$/, /\.jpg$/, /\.png$/, /\.ico$/, /\.json$/],
     runtimeCaching: [{
       urlPattern: new RegExp('https://i.imgur.com'),
-      handler: 'staleWhileRevalidate'
+      handler: 'StaleWhileRevalidate'
     }]
   }),
 ];
 
 const devPlugins = [
-  new CleanWebpackPlugin(['dist']),
+  new CleanWebpackPlugin(),
   new webpack.ProgressPlugin(),
   new HtmlWebpackPlugin({
     filename: 'index.html',
@@ -106,7 +106,7 @@ module.exports = ({mode, presets}) => {
           }
         ]
       },
-      plugins:activePlugins
+      plugins: activePlugins
     },
   );
 };
